@@ -1,4 +1,13 @@
-# Preact, TypeScript, Vite, @benchristel/taste
+# Sleep Calendar
+> Copy sleep data over to calendar for observation.
+
+## Design
+
+- [ ] Button to authenticate Garmin API
+- [ ] Button to display sleep data sample
+- [ ] Button to authenticate Google Calendar
+- [ ] Button to sync sleep data to calendar
+
 
 ## Setup
 
