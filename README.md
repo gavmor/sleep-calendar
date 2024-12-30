@@ -1,4 +1,4 @@
-# Sleep Calendar
+# Sleep Calendar: Paused Pending "Garmin Connect Developer Program Access"
 > Copy sleep data over to calendar for observation.
 
 ## Design
@@ -7,7 +7,6 @@
 - [ ] Button to display sleep data sample
 - [ ] Button to authenticate Google Calendar
 - [ ] Button to sync sleep data to calendar
-
 
 ## Setup
 

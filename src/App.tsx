@@ -1,20 +1,21 @@
 import { h } from "preact"
 import { useState } from "preact/hooks"
 import "./app.css"
-
-
-// # Sleep Calendar
-// > Copy sleep data over to calendar for observation.
-
-// ## Design
-
-// - [ ] Button to authenticate Garmin API
-// - [ ] Button to display sleep data sample
-// - [ ] Button to authenticate Google Calendar
-// - [ ] Button to sync sleep data to calendar
+import { useOAuth2 } from "@tasoskakour/react-use-oauth2";
 
 export function App() {
     const [showSleepData, setShowSleepData] = useState(false);
+
+    const { getAuth } = useOAuth2({
+        authorizeUrl: "https://connect.garmin.com/oauth-service/oauth/authorize",
+        clientId: "YOUR_GARMIN_CLIENT_ID",
+        redirectUri: `${document.location.origin}/callback`,
+        exchangeCodeForTokenQueryFn: async (code) => ({ code }),
+        scope: "activity:read sleep:read",
+        responseType: "code",
+        onSuccess: (payload) => console.log("Authentication successful", payload),
+        onError: (error) => console.log("Authentication error", error)
+    });
 
     return <div class="container">
         <header>
@@ -22,7 +23,7 @@ export function App() {
         </header>
         <main>
             <section class="connect-buttons">
-                <button>Connect Garmin</button>
+                <button onClick={() => getAuth()}>Connect Garmin</button>
                 <button>Connect Google Calendar</button>
             </section>
             <section class="action-buttons">
@@ -33,6 +34,7 @@ export function App() {
         </main>
     </div>
 }
+
 const mockSleepData = [
     { date: '2024-01-01', duration: '7h 30m', quality: 'Good' },
     { date: '2024-01-02', duration: '6h 45m', quality: 'Fair' },

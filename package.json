@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "@benchristel/taste": "0.5.0",
+    "@tasoskakour/react-use-oauth2": "^2.0.1",
+    "garmin-connect": "^1.6.2",
     "preact": "^10.11.0"
   },
   "scripts": {
